@@ -29,7 +29,12 @@ load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG")
 
-ALLOWED_HOSTS = [".vercel.app", "127.0.0.1", ".now.sh"]
+ALLOWED_HOSTS = [
+    ".vercel.app",
+    "127.0.0.1",
+    ".now.sh",
+    "quickfood-backend.onrender.com",
+]
 CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
