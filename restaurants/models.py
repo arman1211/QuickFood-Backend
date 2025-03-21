@@ -19,6 +19,9 @@ class Restaurant(models.Model):
         return self.name
 
 
+# MenuItem
+
+
 class MenuItem(models.Model):
     CATEGORY_CHOICES = [
         ("Salad", "Salad"),
