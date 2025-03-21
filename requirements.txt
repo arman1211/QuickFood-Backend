@@ -1,5 +1,4 @@
 asgiref==3.7.2
-# backports.zoneinfo
 Django==3.2.25
 django-cors-headers==4.1.0
 django-environ==0.11.2
@@ -15,6 +14,7 @@ python-dotenv==0.21.1
 pytz==2025.1
 PyYAML==6.0.1
 sqlparse==0.4.4
-typing-extensions==4.7.1
+typing_extensions==4.7.1
 uritemplate==4.1.1
 whitenoise==6.5.0
+setuptools
