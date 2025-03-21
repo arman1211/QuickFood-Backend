@@ -23,20 +23,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 
-
 load_dotenv()
 
 # Get the SECRET_KEY from environment variables
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG")
 
-ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', '.now.sh']
+ALLOWED_HOSTS = [".vercel.app", "127.0.0.1", ".now.sh"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
+    "whitenoise.runserver_nostatic",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -52,11 +51,11 @@ INSTALLED_APPS = [
     "users",
     "restaurants",
     "orders",
-    'base',
+    "base",
 ]
 
 MIDDLEWARE = [
-     'whitenoise.middleware.WhiteNoiseMiddleware', 
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -85,7 +84,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "config.wsgi.app"
+WSGI_APPLICATION = "config.wsgi.application"
 
 
 # Database
@@ -99,13 +98,13 @@ WSGI_APPLICATION = "config.wsgi.app"
 # }
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'), 
-        'USER': os.getenv('DB_USER'), 
-        'PASSWORD': os.getenv('DB_PASS'),  
-        'HOST': os.getenv('DB_HOST'), 
-        'PORT': os.getenv('DB_PORT'), 
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASS"),
+        "HOST": os.getenv("DB_HOST"),
+        "PORT": os.getenv("DB_PORT"),
     }
 }
 
@@ -146,8 +145,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 AUTH_USER_MODEL = "users.CustomUser"
 
@@ -170,8 +169,8 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
 }
 
@@ -183,18 +182,10 @@ SIMPLE_JWT = {
 }
 
 SWAGGER_SETTINGS = {
-    'PERSIST_AUTH': True,
-    'USE_SESSION_AUTH': False,
-    'SECURITY_DEFINITIONS': {
-        'api_key': {
-            'type': 'apiKey',
-            'in': 'header',
-            'name': 'Api-Key'
-        },
-        'Bearer': {
-            'type': 'apiKey',
-            'in': 'header',
-            'name': 'Authorization'
-        }
+    "PERSIST_AUTH": True,
+    "USE_SESSION_AUTH": False,
+    "SECURITY_DEFINITIONS": {
+        "api_key": {"type": "apiKey", "in": "header", "name": "Api-Key"},
+        "Bearer": {"type": "apiKey", "in": "header", "name": "Authorization"},
     },
-} 
+}
