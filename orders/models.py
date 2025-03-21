@@ -2,6 +2,7 @@ from django.db import models
 from users.models import CustomUser
 from restaurants.models import MenuItem
 
+
 class DeliveryAddress(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=255, null=True, blank=True)
@@ -40,27 +41,38 @@ class Order(models.Model):
         ("preparing", "Preparing"),
         ("out_for_delivery", "Out for Delivery"),
         ("delivered", "Delivered"),
-        ("cancelled", "Cancelled"),
+        ("canceled", "Canceled"),
     )
 
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
-    cart = models.OneToOneField(Cart, on_delete=models.CASCADE, related_name="order", null=True,blank=True)
-    delivery_address = models.ForeignKey(DeliveryAddress, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(
+        CustomUser, on_delete=models.CASCADE, null=True, blank=True
+    )
+    cart = models.OneToOneField(
+        Cart, on_delete=models.CASCADE, related_name="order", null=True, blank=True
+    )
+    delivery_address = models.ForeignKey(
+        DeliveryAddress, on_delete=models.SET_NULL, null=True, blank=True
+    )
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="preparing")
+    status = models.CharField(
+        max_length=20, choices=STATUS_CHOICES, default="preparing"
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"Order {self.id} - {self.user.username} - {self.status}"
-    
+
     def get_ordered_items(self):
         ordered_items = []
         if self.cart:
             for cart_item in self.cart.cart_items.all():
-                ordered_items.append({
-                    'item_name': cart_item.menu_item.name,
-                    'quantity': cart_item.quantity,
-                    'price_per_item': cart_item.menu_item.price,  # Assuming price is in the MenuItem model
-                    'total_price_for_item': cart_item.menu_item.price * cart_item.quantity
-                })
+                ordered_items.append(
+                    {
+                        "item_name": cart_item.menu_item.name,
+                        "quantity": cart_item.quantity,
+                        "price_per_item": cart_item.menu_item.price,  # Assuming price is in the MenuItem model
+                        "total_price_for_item": cart_item.menu_item.price
+                        * cart_item.quantity,
+                    }
+                )
         return ordered_items

@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     ".now.sh",
     "quickfood-backend.onrender.com",
+    "quickfood-frontend.netlify.app/",
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -172,6 +173,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://your-frontend-url.com",
     "https://quickfood-backend.onrender.com",
     "https://quick-food-backend.vercel.app",
+    "https://quickfood-frontend.netlify.app",
     "http://localhost:5173",
 ]
 
@@ -179,6 +181,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://your-frontend-url.com",
     "https://quickfood-backend.onrender.com",
     "https://quick-food-backend.vercel.app/",
+    "https://quickfood-frontend.netlify.app",
 ]
 
 REST_FRAMEWORK = {
