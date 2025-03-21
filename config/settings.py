@@ -166,10 +166,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+
+# If you want to allow specific origins (recommended for production)
 CORS_ALLOWED_ORIGINS = [
+    "https://your-frontend-url.com",
+    "https://quickfood-backend.onrender.com",
     "http://localhost:5173",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://your-frontend-url.com",
+    "https://quickfood-backend.onrender.com",
+]
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
