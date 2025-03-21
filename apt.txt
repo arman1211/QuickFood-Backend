@@ -1,2 +1,0 @@
-libjpeg62
-libjpeg62-turbo
